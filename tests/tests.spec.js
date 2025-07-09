@@ -5,7 +5,33 @@ import { App } from '../src/app.js';
 const url = 'https://academybugs.com/find-bugs/';
 let app;
 
-test('Баг с фильтрацией по цене @ProductPage', async ({ page }) => {
+test('Баг при увеличении количества товара в корзине', async ({ page }) => {
+  await allure.tag("ConsumerCart");
+  app = new App(page);
+  await app.mainPage.open(url);
+  await app.mainPage.goToAddProductToCart();
+  await app.mainPage.goToCheckout();
+  await app.consumerCart.goUpdateQuantity();
+  await allure.step("Проверка отчета о проблеме на наличие бага количества", async () => {
+  await expect(app.mainPage.popupPage).toContainText('In this bug, the product quantity cannot be increased past 2.');
+});
+});
+
+test('Баг при общей стоимости больше 100', async ({ page }) => {
+  await allure.tag("ConsumerCart");
+  app = new App(page);
+  await app.mainPage.open(url);
+  await app.mainPage.goToAddProductToCart();
+  await app.mainPage.goToCheckout();
+  await app.consumerCart.goToProductPrice();
+  await app.consumerCart.chooseCorrectResult();
+  await app.consumerCart.goToIssueReport();
+  await allure.step("Проверка отчета о баге с общим количеством", async () => {
+  await expect(app.mainPage.popupPage).toContainText('In this bug, the grand total is $100 more than the sum of all products in the cart.');
+});
+});
+
+test('Баг с фильтрацией по цене', async ({ page }) => {
   await allure.tag("ProductPage");
   app = new App(page);
   await app.mainPage.open(url);
@@ -14,11 +40,11 @@ test('Баг с фильтрацией по цене @ProductPage', async ({ pag
   await app.productPage.chooseCorrectResultFilterByPrice();
   await app.consumerCart.goToIssueReport();
   await allure.step("Проверка отчета о баге на филтрацию", async () => {
-    await expect(app.mainPage.popupPage).toContainText('In this bug, the filter by price doesn\'t work in the product details or product list pages.');
-  });
+  await expect(app.mainPage.popupPage).toContainText('In this bug, the filter by price doesn\'t work in the product details or product list pages.');
+});
 });
 
-test('Баг с описанием на странице товара @ProductPage', async ({ page }) => {
+test('Баг с описанием на странице товара', async ({ page }) => {
   await allure.tag("ProductPage");
   app = new App(page);
   await app.mainPage.open(url);
@@ -27,22 +53,11 @@ test('Баг с описанием на странице товара @ProductPa
   await app.productPage.chooseCorrectResultDescription();
   await app.consumerCart.goToIssueReport();
   await allure.step("Проверка отчёта о проблеме на наличие бага в описании", async () => {
-    await expect(app.mainPage.popupPage).toContainText('In this bug, the short description and description of the product are not in English.');
-  });
+  await expect(app.mainPage.popupPage).toContainText('In this bug, the short description and description of the product are not in English.');
+});
 });
 
-test('Баг при увеличении количества товара в корзине @consumerCart', async ({ page }) => {
-  await allure.tag("consumerCart");
-  app = new App(page);
-  await app.mainPage.open(url);
-  await app.mainPage.goToAddProductToCart();
-  await app.mainPage.goToCheckout();
-  await app.consumerCart.goUpdateQuantity();
-  await allure.step("Проверка отчета о проблеме на наличие бага количества", async () => {
-  await expect(app.mainPage.popupPage).toContainText('In this bug, the product quantity cannot be increased past 2.');});
-});
-
-test('Баг с загрузкой в разделе горящие предложения @ProductPage', async ({ page }) => {
+test('Баг с загрузкой в разделе горящие предложения', async ({ page }) => {
   await allure.tag("ProductPage");
   app = new App(page);
   await app.mainPage.open(url);
@@ -54,18 +69,6 @@ test('Баг с загрузкой в разделе горящие предло
   await app.productPage.chooseCorrectResultHotItem();
   await app.consumerCart.goToIssueReport();
   await allure.step("Проверка отчета о баге в горящем предложении", async () => {
-  await expect(app.mainPage.popupPage).toContainText('In this bug, the product in the Hot Item section keeps loading.');});
+  await expect(app.mainPage.popupPage).toContainText('In this bug, the product in the Hot Item section keeps loading.');
 });
-
-test('Баг при общей стоимости больше 100 @consumerCart', async ({ page }) => {
-  await allure.tag("consumerCart");
-  app = new App(page);
-  await app.mainPage.open(url);
-  await app.mainPage.goToAddProductToCart();
-  await app.mainPage.goToCheckout();
-  await app.consumerCart.goToProductPrice();
-  await app.consumerCart.chooseCorrectResult();
-  await app.consumerCart.goToIssueReport();
-  await allure.step("Проверка отчета о баге с общим количеством", async () => {
-  await expect(app.mainPage.popupPage).toContainText('In this bug, the grand total is $100 more than the sum of all products in the cart.');});
 });
