@@ -1,0 +1,6 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","5687","Баг с загрузкой в разделе горящие предложения","chromium","Wed Jul 09 20:44:07 GMT 2025","passed","Wed Jul 09 20:44:13 GMT 2025","","","",""
+"","5412","Баг с описанием на странице товара","chromium","Wed Jul 09 20:44:01 GMT 2025","passed","Wed Jul 09 20:44:07 GMT 2025","","","",""
+"","9729","Баг при общей стоимости больше 100","chromium","Wed Jul 09 20:43:43 GMT 2025","passed","Wed Jul 09 20:43:52 GMT 2025","","","",""
+"","11372","Баг при увеличении количества товара в корзине","chromium","Wed Jul 09 20:43:26 GMT 2025","passed","Wed Jul 09 20:43:37 GMT 2025","","","",""
+"","9072","Баг с фильтрацией по цене","chromium","Wed Jul 09 20:43:52 GMT 2025","passed","Wed Jul 09 20:44:01 GMT 2025","","","",""
