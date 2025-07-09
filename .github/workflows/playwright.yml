@@ -1,6 +1,5 @@
 # Название workflow
 name: e2e playwright
-
 on:
   push:
     branches: [academybugs, main, master]
