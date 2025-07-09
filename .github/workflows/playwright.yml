@@ -3,9 +3,9 @@ name: pw tests
 # Когда мы запускаем автотесты
 on:
   push:
-    branches: [ main, master ]
+    branches: [ academybugs,main, master ]
   pull_request:
-    branches: [ main, master ]
+    branches: [ academybugs,main, master ]
  # ручной запуск   
   workflow_dispatch:
 # jobs
