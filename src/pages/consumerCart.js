@@ -1,6 +1,7 @@
 import * as allure from "allure-js-commons";
 import { basePage } from "./basePage";
 
+
 export class consumerCart extends basePage {
     constructor (page) {
         super (page);

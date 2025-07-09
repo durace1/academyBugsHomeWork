@@ -10,13 +10,16 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : 2,
-  reporter: [['list'], ['allure-playwright']],
+  reporter: [['line'], ['allure-playwright', {
+      detail: true,
+      outputFolder: 'allure-results',
+      suiteTitle: false
+    }]
+  ],
   use: {
-    headless: true,
-    viewport: { width: 1280, height: 720 },
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
-    trace: 'on-first-retry', // Enables trace recording on first retry for debugging
+    trace: 'on-first-retry',
   },
 
   projects: [

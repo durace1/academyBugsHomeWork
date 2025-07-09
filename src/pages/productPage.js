@@ -1,6 +1,7 @@
 import * as allure from "allure-js-commons";
 import { basePage } from "./basePage";
 
+
 export class ProductPage extends basePage {
     constructor (page) {
         super (page);
@@ -9,7 +10,6 @@ export class ProductPage extends basePage {
         this.descriptionBlock = this.page.locator(':nth-match(:text("Nam nec tellus a odio"), 2)');
         this.hotItemBlock = this.page.locator('#ec_image_product_widget_anchor-bracelet_1_0');
         this.loader = this.page.locator('#post-1820 div').nth(2);
-        //this.overlayCardPage = this.page.locator('#sq-page');
         this.typeBugCheckDescription = this.page.getByLabel('Content');
         this.correctResultCheckDescription = this.page.getByLabel('The text should be in English');
         this.typeBugCheckFilterByPrice = this.page.getByLabel('Functional', { exact: true });

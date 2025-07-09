@@ -1,4 +1,5 @@
 import * as allure from "allure-js-commons";
+
 export class basePage {
     constructor (page)
     {

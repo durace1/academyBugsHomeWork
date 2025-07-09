@@ -5,6 +5,7 @@ import { App } from '../src/app.js';
 const url = 'https://academybugs.com/find-bugs/';
 let app;
 
+
 test('Баг при увеличении количества товара в корзине', async ({ page }) => {
   await allure.tag("ConsumerCart");
   app = new App(page);
