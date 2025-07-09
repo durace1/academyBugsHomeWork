@@ -1,0 +1,6 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","13177","Баг при общей стоимости больше 100 @consumerCart","chromium","Wed Jul 09 18:08:23 GMT 2025","passed","Wed Jul 09 18:08:37 GMT 2025","","tests.spec.js","",""
+"","5208","Баг с описанием на странице товара @ProductPage","chromium","Wed Jul 09 18:07:53 GMT 2025","passed","Wed Jul 09 18:07:58 GMT 2025","","tests.spec.js","",""
+"","9513","Баг с загрузкой в разделе горящие предложения @ProductPage","chromium","Wed Jul 09 18:08:14 GMT 2025","passed","Wed Jul 09 18:08:23 GMT 2025","","tests.spec.js","",""
+"","15829","Баг при увеличении количества товара в корзине @consumerCart","chromium","Wed Jul 09 18:07:58 GMT 2025","passed","Wed Jul 09 18:08:14 GMT 2025","","tests.spec.js","",""
+"","8107","Баг с фильтрацией по цене @ProductPage","chromium","Wed Jul 09 18:07:44 GMT 2025","passed","Wed Jul 09 18:07:53 GMT 2025","","tests.spec.js","",""
