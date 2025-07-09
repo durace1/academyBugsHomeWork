@@ -1,46 +1,57 @@
-# Название workflow
-name: e2e playwright
-
+# Называем workflow
+name: pw tests
+# Когда мы запускаем автотесты
 on:
   push:
-    branches: [academybugs, main, master]
+    branches: [ main, master ]
   pull_request:
-    branches: [academybugs, main, master]
+    branches: [ main, master ]
+ # ручной запуск   
   workflow_dispatch:
-
-  #Сами джобы
+# jobs
 jobs:
-  #название джобы
-  e2e:
+  e2eTests:
     timeout-minutes: 30
     runs-on: ubuntu-latest
     steps:
-      #делаем чекаут кода
+      # делаем чекаут
       - uses: actions/checkout@v4
-      
+      # устанавливаем node.js
       - uses: actions/setup-node@v4
         with:
-         node-version: lts/*
-         
-      - name: install npm
-        run: npm ci
-        
-      - name: install pw
+          node-version: lts/*
+      # устанавливаем пакеты node
+      - name: Установить пакеты
+        run: npm i
+      # устанавливаем PW
+      - name: Установить PW
         run: npx playwright install --with-deps
-        
-      - name: Run test
+      - name: Запустить PW
         run: npm run test
-        
-#cохраняем отчет pw/allure
-      - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v4
+      # Сохраняем отчет PW  
+      - uses: actions/upload-artifact@v4
+        if: always()
+        continue-on-error: true
+        with:
+          name: test-results
+          path: test-results
+          retention-days: 20
+      # Сохраняем результаты Allure 
+      - uses: actions/upload-artifact@v4
         if: always()
         continue-on-error: true
         with:
           name: allure-results
-          path: allure-results/
-          retention-days: 3
-          
+          path: allure-results
+          retention-days: 20
+      # Забираем результаты предыдущего запуска  
+      - uses: actions/checkout@v4
+        if: always()
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages
+      # Формируем из allure-results отчёт allure-report
       - uses: simple-elf/allure-report-action@master
         if: always()
         id: allure-report
@@ -50,12 +61,11 @@ jobs:
           allure_report: allure-report
           allure_history: allure-history
           keep_reports: 20
-
-      - name: Create report    
-        uses: peaceiris/actions-gh-pages@v4
+      # Деплоим отчёт
+      - name: deploy report
         if: always()
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./allure-report
-          keep_files: true
-          force_orphan: false
+          publish_branch: gh-pages
+          publish_dir: allure-history
