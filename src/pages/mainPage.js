@@ -1,5 +1,5 @@
 import * as allure from "allure-js-commons";
-import { BasePage } from "./BasePage";
+import { BasePage } from "./basePage";
 
 export class MainPage extends BasePage {
     constructor (page) {

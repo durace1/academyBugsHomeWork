@@ -1,5 +1,5 @@
 import * as allure from "allure-js-commons";
-export class BasePage {
+export class basePage {
     constructor (page)
     {
         this.page = page;

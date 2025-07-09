@@ -1,7 +1,7 @@
 import * as allure from "allure-js-commons";
-import { BasePage } from "./BasePage";
+import { basePage } from "./basePage";
 
-export class consumerCart extends BasePage {
+export class consumerCart extends basePage {
     constructor (page) {
         super (page);
         this.productPrice = this.page.getByText('$152.99');
