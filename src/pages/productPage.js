@@ -7,10 +7,9 @@ export class ProductPage extends basePage {
         this.productCard = this.page.locator('#ec_product_image_effect_4381370').getByRole('link');
         this.filterByPrice = this.page.getByRole('link', { name: '$50.00 - $99.99 (3)' });
         this.descriptionBlock = this.page.locator(':nth-match(:text("Nam nec tellus a odio"), 2)');
-        this.currencyBlock = this.page.locator('#ec_currency_conversion');
         this.hotItemBlock = this.page.locator('#ec_image_product_widget_anchor-bracelet_1_0');
         this.loader = this.page.locator('#post-1820 div').nth(2);
-        this.overlayCardPage = this.page.locator('#sq-page');
+        //this.overlayCardPage = this.page.locator('#sq-page');
         this.typeBugCheckDescription = this.page.getByLabel('Content');
         this.correctResultCheckDescription = this.page.getByLabel('The text should be in English');
         this.typeBugCheckFilterByPrice = this.page.getByLabel('Functional', { exact: true });
