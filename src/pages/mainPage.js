@@ -1,7 +1,7 @@
 import * as allure from "allure-js-commons";
-import { BasePage } from "./basePage";
+import { basePage } from "./basePage";
 
-export class MainPage extends BasePage {
+export class MainPage extends basePage {
     constructor (page) {
         super (page);
         this.addToCartButton = this.page.locator('#ec_add_to_cart_5');

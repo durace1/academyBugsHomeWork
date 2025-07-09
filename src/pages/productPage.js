@@ -1,7 +1,7 @@
 import * as allure from "allure-js-commons";
-import { BasePage } from "./basePage";
+import { basePage } from "./basePage";
 
-export class ProductPage extends BasePage {
+export class ProductPage extends basePage {
     constructor (page) {
         super (page);
         this.productCard = this.page.locator('#ec_product_image_effect_4381370').getByRole('link');
