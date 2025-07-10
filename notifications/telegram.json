@@ -1,0 +1,19 @@
+{
+    "base": {
+      "logo": "",
+      "project": "Academy Bugs",
+      "environment": "some env",
+      "comment": "comment",
+      "reportLink": "",
+      "language": "en",
+      "allureFolder": "allure-report",
+      "enableChart": true,
+      "enableSuitesPublishing": false,
+      "customData": {}
+    },
+    "telegram": {
+      "token": "7650070718:AAFON_VM4KMc7mdjNQxfzdUecXE42S4Y9Kw",
+      "chat": "-4705064332",
+      "replyTo": ""
+    }
+}

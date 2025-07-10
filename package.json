@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "allureGenerate": "allure generate --clean",
     "test": "npx playwright test",
     "testUI": "npx playwright test --ui",
     "codegen": "npx playwright codegen"
